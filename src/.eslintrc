@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "quotes": [2, "single", "avoid-escape"],
+    "new-cap": false,
+    "no-underscore-dangle": false,
+    "comma-spacing": false,
+    "no-use-before-define": false,
+    "no-unused-vars": false,
+    "global-strict": [0, "always"],
+    camelcase: false,
+    "key-spacing": false,
+    semi: 0,
+    curly: [2, "multi"],
+    complexity: [2, 5]
+  },
+  "globals": {
+    require: false,
+    process: false,
+    module: false,
+    __dirname: false,
+    '$logger': false,
+    setTimeout: false,
+    Buffer: false,
+    clearTimeout: false,
+    console: false
+  }
+}

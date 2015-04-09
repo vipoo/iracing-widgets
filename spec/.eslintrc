@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "quotes": [2, "single", "avoid-escape"],
+    "new-cap": false,
+    "no-underscore-dangle": false,
+    "comma-spacing": false,
+    "no-use-before-define": false,
+    "no-unused-vars": false,
+    "global-strict": [0, "always"],
+    camelcase: false,
+    "key-spacing": false,
+    semi: 0
+  },
+  "globals": {
+    fixtures: false,
+    _post: false,
+    expectResponse: false,
+    _get: false,
+    verify404: false,
+    verifyResourceLink: false,
+    DB: false,
+    fit: false,
+    _getUrl: false,
+    request: false,
+    expectStatusCode: false,
+    require: false,
+    process: false,
+    module: false,
+    console: false,
+    __dirname: false,
+    GLOBAL: false,
+    describe: false,
+    it: false,
+    beforeEach: false,
+    beforeAll: false,
+    expect: false,
+    jasmine: false,
+    spyOn: false,
+    verifyResourceLinkArray: false,
+    _getRedirectedUrl: false
+
+  }
+}

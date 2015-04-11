@@ -7,3 +7,5 @@ bower_components
 *.crt
 *.key
 log
+public/Leaderboard.html
+public/Leaderboard_files

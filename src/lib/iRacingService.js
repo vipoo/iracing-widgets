@@ -7,7 +7,7 @@ import guard from 'when/guard';
 const host = config.hostPrefix()
 
 const _baseRequest = request.defaults({
-  pool: {maxSockets: 3 },
+  pool: {maxSockets: 20 },
   agentOptions: { ca: fs.readFileSync('./my-ca.crt') },
   headers: { authorization: config.iracingServiceToken() }
 })
@@ -27,7 +27,7 @@ function requestPromise(opts) {
   })
 }
 
-const baseRequest = guard(guard.n(3), requestPromise)
+const baseRequest = guard(guard.n(20), requestPromise)
 
 function retryTimes(f, count = 3) {
   return f()
@@ -42,7 +42,7 @@ function retryTimes(f, count = 3) {
 function get(url) {
 
   var options = {
-    uri: host + url,
+    uri: url.match(/^http/) ? url : host + url,
     json: true,
     method: 'GET'
   }

@@ -3,7 +3,8 @@
   /* change colours to suit your needs */
   /* change colours to suit your needs */
   /* change border colour to suit your needs */
-   }
+  
+  background: #FFFFFF; }
   .iracing-widget div, .iracing-widget span, .iracing-widget object, .iracing-widget iframe, .iracing-widget h1, .iracing-widget h2, .iracing-widget h3, .iracing-widget h4, .iracing-widget h5, .iracing-widget h6, .iracing-widget p, .iracing-widget blockquote, .iracing-widget pre, .iracing-widget abbr, .iracing-widget address, .iracing-widget cite, .iracing-widget code, .iracing-widget del, .iracing-widget dfn, .iracing-widget em, .iracing-widget img, .iracing-widget ins, .iracing-widget kbd, .iracing-widget q, .iracing-widget samp, .iracing-widget small, .iracing-widget strong, .iracing-widget sub, .iracing-widget sup, .iracing-widget var, .iracing-widget b, .iracing-widget i, .iracing-widget dl, .iracing-widget dt, .iracing-widget dd, .iracing-widget ol, .iracing-widget ul, .iracing-widget li, .iracing-widget fieldset, .iracing-widget form, .iracing-widget label, .iracing-widget legend, .iracing-widget table, .iracing-widget caption, .iracing-widget tbody, .iracing-widget tfoot, .iracing-widget thead, .iracing-widget tr, .iracing-widget th, .iracing-widget td, .iracing-widget article, .iracing-widget aside, .iracing-widget canvas, .iracing-widget details, .iracing-widget figcaption, .iracing-widget figure, .iracing-widget footer, .iracing-widget header, .iracing-widget hgroup, .iracing-widget menu, .iracing-widget nav, .iracing-widget section, .iracing-widget summary, .iracing-widget time, .iracing-widget mark, .iracing-widget audio, .iracing-widget video {
     margin: 0;
     padding: 0;

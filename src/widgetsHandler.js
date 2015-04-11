@@ -14,11 +14,15 @@ function addWidget(widgetName, res, widget) {
           .then(html => res.write(`iRacingWidgets.${widgetName} = '${html}';`))
 }
 
+const widgetBootstrap = fs.readFileSync('./src/assets/widgetInjector.js').toString();
+
 export default function(req, res) {
 
   res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
 
-  res.write('var iRacingWidgets = { inject: function(k) { if(iRacingWidgets[k]) document.write(iRacingWidgets[k]) } };')
+  let filename = req.headers.host + '/main.css'
+
+  res.write(widgetBootstrap.replace('$$filename$$', filename))
 
   when
     .all(Object

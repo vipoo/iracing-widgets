@@ -26,10 +26,12 @@ switch( config.nodeEnv() ) {
     break;
 
   case 'production':
+    $logger.info('Widgets hosted on port 81')
     app.listen(81)
     break;
 
   default:
+    $logger.info('Widgets hosted on port 4081')
     app.listen(4081)
 }
 

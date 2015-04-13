@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
   grunt.defineTasks({
     'serve':    [ 'concurrent' ],
-    'default':  [ 'concurrent' ],
+    'default':  [ 'concurrent' ]
   });
 
   require('lib/babel');

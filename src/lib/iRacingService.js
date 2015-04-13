@@ -9,7 +9,8 @@ const host = config.hostPrefix()
 const _baseRequest = request.defaults({
   pool: {maxSockets: 20 },
   agentOptions: { ca: fs.readFileSync('./my-ca.crt') },
-  headers: { authorization: config.iracingServiceToken() }
+  headers: { authorization: config.iracingServiceToken() },
+  //gzip: true
 })
 
 function requestPromise(opts) {

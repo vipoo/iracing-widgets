@@ -12,7 +12,7 @@ const LeagueDrivers = React.createClass({
   },
 
   render() {
-    var driversRow = this.props.drivers.map(renderRow)
+    var driversRow = this.props.drivers.sort(byMaxIRating).map(renderRow)
     return (
       <div className='iracing-widget'>
         <table className='table table-bordered iracing-seasons'>
@@ -34,11 +34,31 @@ LeagueDrivers.inject = function() {
 }
 
 function renderRow(driver) {
-  return (<tr><td>{driver.name}</td></tr>)
+  let ovalRating = getIRating(driver, 'oval')
+  let roadRating = getIRating(driver, 'road')
+
+  let boldOval = ovalRating > roadRating
+  let boldRoad = ovalRating <  roadRating
+
+  let renderOval = boldOval ? <b>{ovalRating}</b> : ovalRating
+  let renderRoad = boldRoad ? <b>{roadRating}</b> : roadRating
+  return (<tr><td>{driver.name}</td><td>{renderOval}</td><td>{renderRoad}</td></tr>)
+}
+
+function getIRating(driver, raceType) {
+  return driver._embedded && driver._embedded[raceType] ? driver._embedded[raceType].irating : ''
+}
+
+function getMaxIRating(driver) {
+  return Math.max(getIRating(driver, 'oval'), getIRating(driver, 'road'))
+}
+
+function byMaxIRating(a, b) {
+  return getMaxIRating(b) - getMaxIRating(a)
 }
 
 function renderHeadingRow() {
-  return (<tr><th>Name</th></tr>)
+  return (<tr><th>Name</th><th>Oval iRating</th><th>Road iRating</th></tr>)
 }
 
 export default LeagueDrivers

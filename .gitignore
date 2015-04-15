@@ -9,3 +9,5 @@ bower_components
 log
 public/Leaderboard.html
 public/Leaderboard_files
+public/*.css
+

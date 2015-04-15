@@ -16,8 +16,8 @@ module.exports = {
     }
   },
   styles: {
-    files: ['src/styles/**/*.scss'],
-    tasks: ['sass'],
+    files: ['src/styles/**/*.less'],
+    tasks: ['less'],
     options: {
       atBegin: true
     }

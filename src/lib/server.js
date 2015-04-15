@@ -22,12 +22,7 @@ app.use((req, res) => {
 
 switch( config.nodeEnv() ) {
   case 'test':
-   app.listen(4181);
-    break;
-
-  case 'production':
-    $logger.info('Widgets hosted on port 81')
-    app.listen(81)
+    app.listen(4181);
     break;
 
   default:

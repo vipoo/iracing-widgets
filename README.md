@@ -37,15 +37,6 @@ grunt   # or ./node_modules/.bin/grunt
 
 browse to http://localhost:4081/
 
-### node-sass issue on iojs
-
-If you are using iojs - and have issues with node-sass, you may need to
-recompile it for your version of iojs (tested with v1.6.3)
-
-```
-cd node_modules/grunt-sass/node_modules/node-sass
-node ./scripts/build.js -f
-```
 
 ## Grunt tasks
 
@@ -53,9 +44,9 @@ node ./scripts/build.js -f
 
 Runs the specs, uses jasmine on node - at this time, the project has no tests!
 
-### grunt sass
+### grunt less
 
-Compiles the src/styles/main.scss (and others) to public/main.css
+Compiles the src/styles/main.less (and others) to public/main.css
 
 ### grunt serve
 
@@ -64,9 +55,4 @@ Runs the web application (aka node app.js)
 ### grunt eslint
 
 Runs the eslint javascript compliance checks
-
-### grunt bower
-
-Updates, installs new bower components - as per bower.json
-
 

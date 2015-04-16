@@ -22,3 +22,7 @@ function cleanStack(stack) {
     return '---'
   return newStack.join('\n')
 }
+
+
+
+process.on('uncaughtException', err => $logger.info(err))

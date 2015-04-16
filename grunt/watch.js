@@ -22,6 +22,13 @@ module.exports = {
       atBegin: true
     }
   },
+  uglify: {
+    files: ['src/js/**/*.js'],
+    tasks: ['uglify'],
+    options: {
+      atBegin: true
+    }
+  },
   eslint: {
     files: ['**/*.js'],
     tasks: ['eslint'],

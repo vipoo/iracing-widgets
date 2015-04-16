@@ -12,8 +12,19 @@ const html404 = fs.readFileSync('./public/404.html').toString()
 const app = express()
 
 app.use(morgan(':date[iso] :remote-addr :remote-user :method :url :status - :req[content-length] - :res[content-length] - :response-time ms', {stream: accessLogger}))
+app.set('view engine', 'ejs');
+app.set('views', 'src/views');
+
+
 app.use('/', express.static('public'))
+
 app.get('/widgets.js', require('widgetsHandler'))
+
+app.get('/widgets', (req, res) => res.render('widgets'))
+app.get('/data', (req, res) => res.render('data'))
+app.get('/index', (req, res) => res.render('index'))
+app.get('/', (req, res) => res.render('index'))
+
 
 app.use((req, res) => {
   res.status(404)

@@ -24,6 +24,8 @@
     setTimeout: false,
     Buffer: false,
     clearTimeout: false,
-    console: false
+    console: false,
+    $: false
+    document: false
   }
 }

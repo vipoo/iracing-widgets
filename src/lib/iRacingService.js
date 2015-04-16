@@ -6,12 +6,15 @@ import guard from 'when/guard';
 
 const host = config.hostPrefix()
 
-const _baseRequest = request.defaults({
+const options = {
   pool: {maxSockets: 20 },
-  agentOptions: { ca: fs.readFileSync('./my-ca.crt') },
-  headers: { authorization: config.iracingServiceToken() },
-  //gzip: true
-})
+  agentOptions: { ca: fs.readFileSync('./my-ca.crt') }
+}
+
+if( config.iracingServiceToken())
+  options.authorization = config.iracingServiceToken()
+
+const _baseRequest = request.defaults(options)
 
 function requestPromise(opts) {
   return when.promise((res, rej) => {

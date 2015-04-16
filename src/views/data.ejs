@@ -1,0 +1,118 @@
+<%- include('header'); -%>
+
+<h2>REST IRacing Data</h2>
+
+<h3><a target="new-window" href='https://www.data-iracing.net/hal/browser.html#'/>https://www.data-iracing.net</a></h3>
+
+<p>&nbsp;<p>
+<h4>Details</h4>
+<p>This service provides a full REST compliant set of resources
+   detailing drivers, races, leagues and other
+   associated data from the iracing platform.
+   (<a href="http://www.iracing.com">http://www.iracing.com</a>).</p>
+
+<p>This data is extracted on a regular basis from iracing's site, and
+   provided at <a target="new-window" href='https://www.data-iracing.net/hal/browser.html#'/>https://www.data-iracing.net</a>
+  as set of highly structured RESTful resources.</p>
+
+<p>For a reference codebase to demonstrate access to this data service, see the web-widgets open source project
+   at  <a target="new-window" href="https://github.com/vipoo/iracing-widgets">https://github.com/vipoo/iracing-widgets</a>
+
+<h4>Resources</h4>
+
+<p>The resoources of the service are returned in <a target="new-window" href="http://stateless.co/hal_specification.html">JSON+HAL format</a>.</p>
+
+<p>Each resource contains a set of links to other associated resources, thus allow easy
+   discovery of the data available.  The root resource provides entries links to all resources available.<p>
+
+<p>The service is hosted using a self-signed certificate (so you will get warnings if you
+   attempt to view the resources through your browser).  You will need to authorise your
+   browser to accept my certificate.</p>
+
+<p>The resources returned, will contain:</p>
+<ul>
+  <li>A set of key attributes relevant to the resouce (eg: name for the driver's name)</li>
+  <li>A <b>_links</b> attribute, detailing a set of links to access associated resources</li>
+  <li>An optional <b>_embedded</b> attribute, containing other associated resources</li>
+  <li>An optional <b>_meta</b> attribute, detailing aspects of the resource object - eg: time resources was retrieved from iracing.com</li>
+</ul>
+
+<p>For example, the resource at <a target="new-window" href="https://www.data-iracing.net/hal/browser.html#/drivers/82503/details/road">/drivers/82503/details/road</a>
+   returns the following json structure:</p>
+
+<pre class='center-block' style='width:65%; min-width:600px'>
+{
+  "race_type": "road",
+  "position": 13305,
+  "starts": 50,
+  "wins": 4,
+  "average_start": 5,
+  "average_finish": 6,
+  "average_points_per_race": 59,
+  "top_25_percent": 19,
+  "average_field_size": 14,
+  "laps": 759,
+  "laps_lead": 61,
+  "average_increment": 3,
+  "irating": 2221,
+  "ttrating": 1564,
+  "club_points": 203,
+  "total_points": 2935,
+  "license_level": 4.61,
+  "_links": {
+    "_self": {
+      "href": "https://www.data-iracing.net/drivers/82503/details/road"
+    },
+    "license": {
+      "href": "https://www.data-iracing.net/licenses/a"
+    },
+    "level": {
+      "href": "https://www.data-iracing.net/licenses/a/4"
+    },
+    "seasons": {
+      "href": "https://www.data-iracing.net/licenses/a/4/road/seasons"
+    }
+  }
+}</pre>
+
+<h4>Accessing the data</h4>
+
+<p>This data is provided as is, with no warranties, etc, for your use in your web site and application.</p>
+
+<h4>Authorisation</h4>
+
+<p>Access to the service, at the moment, requires no authorisation.  A warning is returned in each resource
+if you access without an authorization token.
+
+<p>The open access is for a limited time only, and access tokens will soon be needed to access this service.
+The service will accept a valid iracing member's username/password for access.  Or you can request an access
+token now, by sending a PM to me (Dean Netherton), within the iRacing forums.
+<a target="new-window" href="https://members.iracing.com">members.iracing.com</a></p>
+
+<p>To supply your access/token, you need to supply a Basic Auth header entry in your request, with your
+   credentials encoded (not encypted) in base64.  You can use the <a target="new-window" href="https://www.base64decode.org/">this site</a> to encode your details.</p>
+
+<p>For example, if your username is 'Aladdin' and your password is: 'open sesame' then the header would be:
+<pre>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</pre>
+
+<p>See <a target="new-window" href="http://en.wikipedia.org/wiki/Basic_access_authentication
+">wikipedia</a> and google on how to supply Authorization header. (As the traffic to the service
+is encypted, your password can not be seen by others.)</p>
+
+<h4>Examples</h4>
+
+<p>The code for the web widgets (as detailed on this site), are fully opened source.  They are built using
+   javascript on node - see the github repo for the code.
+   <a target="new-window" href="https://github.com/vipoo/iracing-widgets">https://github.com/vipoo/iracing-widgets</a></p>
+
+<h4>Contacts &amp; Other support</h4>
+
+<p>More information and help on accessing this service, can be found at the forum posting:
+   <a target="new-window" href="http://members.iracing.com/jforum/posts/list/3299337.page">http://members.iracing.com/jforum/posts/list/3299337.page</a></p>
+
+<p>You can also message me, within iracing's forum, or send requests to my github
+   account <a target="new-window" href="https://github.com/vipoo">https://github.com/vipoo</a></p>
+
+<p>&nbsp;</p>
+
+<%- include('footer'); -%>

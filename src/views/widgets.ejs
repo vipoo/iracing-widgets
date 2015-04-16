@@ -1,0 +1,26 @@
+<%- include('header'); -%>
+
+<h3>IRacing Web Widgets</h3>
+
+<p>The iRacing web widgets, will be a set of stanalone web elements, that can be
+   incorporated into any existing web site, requiring only a short piece of html.
+   The widgets will retrieve their data from the www.data-iracing.net service.</p>
+
+<p>At this point in time, there is just one prototype widget, shown below.</p>
+<p>If you would like to place this widget within your your site, you need to paste
+   in the following code:</p>
+
+<pre>
+  &lt;script src='/widgets.js?wid1=leagueMemberStandings'&gt;&lt;/script&gt;
+  &lt;script&gt;iRacingWidgets.inject('wid1')&lt;/script&gt;
+</pre>
+
+<script src='/widgets.js?wid2=leagueMemberStandings'></script>
+
+<div>Widget: List of league members:</div>
+<div style='width: 300px; margin-left: 150px'>
+<script>iRacingWidgets.inject('wid2')</script>
+</div>
+
+
+<%- include('footer'); -%>

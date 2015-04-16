@@ -38,7 +38,7 @@ function renderRow(driver) {
   let roadRating = getIRating(driver, 'road')
 
   let boldOval = ovalRating > roadRating
-  let boldRoad = ovalRating <  roadRating
+  let boldRoad = ovalRating < roadRating
 
   let renderOval = boldOval ? <b>{ovalRating}</b> : ovalRating
   let renderRoad = boldRoad ? <b>{roadRating}</b> : roadRating

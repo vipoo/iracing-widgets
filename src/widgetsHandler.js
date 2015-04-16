@@ -6,15 +6,27 @@ import widgetNames from 'lib/widgetNames'
 var normalizedPath = require('path').join(__dirname, 'components');
 fs.readdirSync(normalizedPath).forEach(f => require('components/' + f))
 
-function addWidget(widgetName, res, widget) {
+function addWidget(widgetName, res, widget, args) {
 
   return widget
-          .inject()
+          .inject(...args)
           .then(component => React.renderToStaticMarkup(component))
           .then(html => res.write(`iRacingWidgets.${widgetName} = '${html}';`))
 }
 
 const widgetBootstrap = fs.readFileSync('./src/assets/widgetInjector.js').toString();
+
+function extractWidgetParams(instanceName, input) {
+  //input = widgetType[arg1, arg2, ...]
+  let match = input.match(/^(.*)\[(.*)\]/)
+  if( !match )
+    return null;
+
+  let name = match[1]
+  let args = match[2].split(',')
+
+  return { instanceName, name, args }
+}
 
 export default function(req, res) {
 
@@ -27,8 +39,10 @@ export default function(req, res) {
   when
     .all(Object
             .keys(req.query)
-            .filter(k => widgetNames.has(req.query[k]))
-            .map(k => addWidget(k, res, require('components/' + req.query[k]))))
+            .map(k => extractWidgetParams(k, req.query[k]))
+            .filter(k => !!k)
+            .filter(k => widgetNames.has(k.name))
+            .map(k => addWidget(k.instanceName, res, require('components/' + k.name), k.args)))
     .catch(err => {
       res.write('console.log("Error producing widget javascript!"); throw new Error("Error producing widget javascript!")')
       throw err

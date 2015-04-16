@@ -4,7 +4,7 @@ import config from 'lib/config';
 
 function createLogger(name, filename, withConsole) {
   var transports = [
-    new (winston.transports.File)({filename: filename + '.' + config.nodeEnv() + '.log', json:false, maxsize: 1000000, maxFiles: 4})
+    new (winston.transports.File)({filename: filename + '.' + config.nodeEnv() + '.log', json:false, maxsize: 1000000, maxFiles: 4, tailable: true})
   ]
 
   if (withConsole)

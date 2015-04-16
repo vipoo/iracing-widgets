@@ -7,8 +7,21 @@
    The widgets will retrieve their data from the www.data-iracing.net service.</p>
 
 <p>At this point in time, there is just one prototype widget, shown below.</p>
+
+<p>This widget shows a list of all members for a league, and their iRatings, ordered by their iRatings.</p>
+
+<p>The sample below, shows the members of the league
+   <a target="new-window" href="http://members.iracing.com/membersite/member/LeagueView.do?league=138">Sim Limited Racing</a>.
+
+<p>To use this widget, you need to discover your league Id.  If you browse to your league page within members.iracing.com,
+   you will see a number at the end of the page's url - this is your league Ids.  A search function will be
+   added later to help you discover these ids</p>
+
+<p>For example, my league's page is at: members.iracing.com/membersite/member/LeagueView.do?league=138<br>
+   So my league id is 138</p>
+
 <p>If you would like to place this widget within your your site, you need to paste
-   in the following code:</p>
+   in the following code: (replacing 138 with the id of your league)</p>
 
 <pre>
   &lt;script src='/widgets.js?wid1=leagueMemberStandings[138]'&gt;&lt;/script&gt;

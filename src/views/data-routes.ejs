@@ -1,0 +1,70 @@
+<%- include('header'); -%>
+
+<h2>REST IRacing Data - keys resources</h2>
+
+<h3><a target="new-window" href='https://www.data-iracing.net/hal/browser.html#'/>https://www.data-iracing.net</a></h3>
+
+<p>&nbsp;<p>
+
+<p>Below is a list of the various resources and their access path, that are available on the service. It is recommend
+where possible, to have your application follow links from containing resource to child resource, instead
+of hard coding the path to child resources.  This will help protect your application from failing, should a
+specific resource have its path changed.</p>
+
+<table class='table table-bordered' >
+  <tr><th>Path</th><th>Description</th></tr>
+
+  <tr><td><a target="new-window" href="https://www.data-iracing.net/hal/browser.html#/">/</a></td><td>Root resource - list of all the key resources</td></tr>
+  <tr><td><a target="new-window" href="https://www.data-iracing.net/hal/browser.html#/">/hal/browser.html</a></td><td>A handy browser based resource inspection tool</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/licenses</td><td>Collection of embedded licenses</td></tr>
+  <tr><td>/licenses/:license-id</td><td>A specific license and its associated levels</td></tr>
+  <tr><td>/licenses/:license-id:/:level:</td><td>A specific license levels</td></tr>
+  <tr><td>/licenses/:license-id:/:level:/:race-type:/seasons</td><td>All eligible seasons for the specific license, level and race type (oval or road)</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/drivers</td><td>Collection of all iracing drivers</td></tr>
+  <tr><td>/drivers/:driver-id:</td><td>Details for a specific driver</td></tr>
+  <tr><td>/drivers/:driver-id:/details/:race-type:</td><td>Category (oval/road) specific driver details - including irating and license</td></tr>
+  <tr><td>/drivers/:driver-id:/standings</td><td>A collection standings for each season the driver has achieved</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/locations</td><td>Collection of all locations</td></tr>
+  <tr><td>/locations/:location-id:</td><td>Details of a specific location</td></tr>
+  <tr><td>/locations/:location-id:/tracks</td><td>A collection of all tracks within this location</td></tr>
+  <tr><td>/locations/:location-id:/tracks/:track-id:</td><td>Details of a specific track</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/seasons</td><td>Collection of all active and inactive seasons</td></tr>
+  <tr><td>/seasons/:race-type:</td><td>Collection of all active and inactive seasons for a specific category (oval/road)</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:</td><td>Details of a specific season</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/images</td><td>A collection of image links related to the seasons</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/cars</td><td>A collection of cars allowed to compete in this season</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events</td><td>A collection of weekly events for the season</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/current</td><td>Redirect to the currently active event for this season (if any)</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week</td><td>Details of the specific season's event</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions</td><td>A list of sessions conducted or scheduled for the weekly event</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id</td><td>Details of a specific session</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/standings/drivers</td><td>List of of latest driver standings for this season</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/standings/drivers/:driver-id:</td><td>Specific driver's standing for this season</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/leagues</td><td>Collection of all leagues</td></tr>
+  <tr><td>/leagues:league-id</td><td>Details for a specific league</td></tr>
+  <tr><td>/leagues:league-id/seasons</td><td>A collection of active and inactive seasons for the league</td></tr>
+  <tr><td>/leagues:league-id/seasons/:season-id:</td><td>Details of a specific league's season</td></tr>
+  <tr><td>/leagues:league-id/seasons/:season-id:/standings/drivers</td><td>A list of all current drivers standings for the league's season</td></tr>
+  <tr><td>/leagues:league-id/seasons/:season-id:/standings/drivers/:driver-id</td><td>Details for a specific driver's standing</td></tr>
+  <tr><td>/leagues:league-id/drivers</td><td>List of all league members</td></tr>
+  <tr><td>/leagues:league-id/drivers/:driver-id:</td><td>Details for a specific league member</td></tr>
+
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>/cars</td><td>Collection of all cars</td></tr>
+  <tr><td>/cars:car-id</td><td>Details for a specific car</td></tr>
+
+</table>
+
+<p>&nbsp;</p>
+
+<%- include('footer'); -%>

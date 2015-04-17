@@ -22,6 +22,7 @@ app.get('/widgets.js', require('widgetsHandler'))
 
 app.get('/widgets', (req, res) => res.render('widgets'))
 app.get('/data', (req, res) => res.render('data'))
+app.get('/data-routes', (req, res) => res.render('data-routes'))
 app.get('/index', (req, res) => res.render('index'))
 app.get('/', (req, res) => res.render('index'))
 

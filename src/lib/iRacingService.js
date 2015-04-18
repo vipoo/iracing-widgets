@@ -3,11 +3,13 @@ import when from 'when';
 import fs from 'fs';
 import config from 'lib/config';
 import guard from 'when/guard';
+import https from 'https';
 
 const host = config.hostPrefix()
 
+var pool = new https.Agent({keepAlive: true, maxSockets: 25, maxFreeSockets: 2, ca: fs.readFileSync('./my-ca.crt') });
 const options = {
-  pool: {maxSockets: 20 },
+  agent: pool,
   agentOptions: { ca: fs.readFileSync('./my-ca.crt') }
 }
 
@@ -31,7 +33,7 @@ function requestPromise(opts) {
   })
 }
 
-const baseRequest = guard(guard.n(20), requestPromise)
+const baseRequest = guard(guard.n(30), requestPromise)
 
 function retryTimes(f, count = 3) {
   return f()

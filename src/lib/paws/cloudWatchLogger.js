@@ -1,7 +1,7 @@
-var AWS = require('aws-sdk');
-var toPromise = require('./toPromise');
+import AWS from 'aws-sdk';
+import toPromise from './toPromise';
 
-module.exports = class {
+export default class {
   constructor() {
     var aws = new AWS.CloudWatchLogs(...Array.slice(arguments))
     this.describeLogStreams = toPromise(aws, 'describeLogStreams')

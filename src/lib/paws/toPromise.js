@@ -1,6 +1,6 @@
-var when = require('when');
+import when from 'when';
 
-module.exports = function(obj, fn) {
+export default function(obj, fn) {
   return function() {
     var args = Array.slice(arguments);
     return when.promise((res, rej) => {

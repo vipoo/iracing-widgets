@@ -17,8 +17,12 @@ class CloudWatchLogger extends winston.Transport {
   }
 
   log(level, msg, meta, callback) {
+    let metaString = JSON.stringify(meta, null, '  ')
+    let parts = [level, msg]
+    if( metaString !== '{}') parts.push(metaString)
+
     this.logEvents.push({
-      message: [level, msg, JSON.stringify(meta, null, '  ')].join(' - '),
+      message: parts.join(' - '),
       timestamp: new Date().getTime()
     });
 

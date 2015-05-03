@@ -1,4 +1,4 @@
-import 'when/monitor/console';
+//import 'when/monitor/console';
 
 process.on('unhandledRejection', function(reason, p){
   $logger.error(reason)

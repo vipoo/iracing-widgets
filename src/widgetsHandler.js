@@ -1,7 +1,8 @@
 import React from 'react';
 import when from 'when';
 import fs from 'fs';
-import widgetNames from 'lib/widgetNames'
+import widgetNames from 'lib/widgetNames';
+import moment from 'moment';
 
 var normalizedPath = require('path').join(__dirname, 'components');
 fs.readdirSync(normalizedPath).forEach(f => require('components/' + f))
@@ -30,7 +31,12 @@ function extractWidgetParams(instanceName, input) {
 
 export default function(req, res) {
 
+  let expireAt = moment().add(2, 'hour')
+  let maxAge = 60 * 60 * 2
+
   res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+  res.setHeader('expires', moment(expireAt).format('ddd, DD MMM YYYY, HH:mm:ss') + ' GMT')
+  res.setHeader('cache-control', 'max-age=' + maxAge)
 
   let filename = req.headers.host + '/main.css'
 

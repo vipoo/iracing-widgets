@@ -4,6 +4,8 @@ import fs from 'fs';
 import config from 'lib/config';
 import guard from 'when/guard';
 import https from 'https';
+import moment from 'moment';
+import poll from 'when/poll';
 
 const host = config.hostPrefix()
 
@@ -45,15 +47,59 @@ function retryTimes(f, count = 3) {
     }))
 }
 
+const inMemoryCache = new Map()
+
+setInterval(() => {
+  try {
+    for(let item of inMemoryCache) {
+      let expireStamp = item[1].response.headers['expires']
+      let expiresAt = moment(expireStamp)
+      let age = moment.duration(moment().diff(expiresAt)).asSeconds()
+      if( expireStamp && age <= 0 )
+        inMemoryCache.delete(item[0])
+    }
+  } catch(err) {
+    $logger.error(err.stack)
+  }
+}, 5000)
+
+let sweeping = false
+
+setInterval(() => {
+  try {
+    if(!sweeping && inMemoryCache.size <= 1000)
+      return
+
+    sweeping = true
+    let orderedItems = Array.from(inMemoryCache).sort((a, b) => a[1].accessedAt - b[1].accessedAt)
+    let count = inMemoryCache.size - 1001
+    let index = 0
+    poll(() => inMemoryCache.delete(orderedItems[index++][0]), 1, () => count-- <= 0)
+      .then(() => sweeping = false)
+      .catch(() => sweeping = false)
+
+  } catch(err) {
+    $logger.error(err.stack)
+    sweeping = false
+  }
+}, 1000)
+
 function get(url) {
 
-  var options = {
-    uri: url.match(/^http/) ? url : host + url,
+  const path = url.match(/^http/) ? url : host + url
+  const cachedHit = inMemoryCache.get(path)
+  if(cachedHit)
+    return when(cachedHit.response)
+
+  const options = {
+    uri: path,
     json: true,
     method: 'GET'
   }
 
   return retryTimes(() => baseRequest(options), 3)
+    .tap(response => inMemoryCache.set(path, { response, accessedAt: moment() }))
+
 }
 
 export default { get: get }

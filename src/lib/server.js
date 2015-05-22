@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import config from 'lib/config';
+import compression from 'compression';
 import fs from 'fs';
 
 const html404 = fs.readFileSync('./public/404.html').toString()
@@ -14,7 +15,9 @@ app.use(morgan(':date[iso] :remote-addr :remote-user :method :url :status - :req
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 
-app.use('/', express.static('public'))
+app.use(compression())
+var oneDay = 86400000;
+app.use('/', express.static('public', { maxAge: oneDay }))
 
 app.get('/widgets.js', require('widgetsHandler'))
 

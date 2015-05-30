@@ -19,13 +19,13 @@ app.use(compression())
 var oneDay = 86400000;
 app.use('/', express.static('public', { maxAge: oneDay }))
 
-app.get('/widgets.js', require('widgetsHandler'))
-
 app.get('/widgets', (req, res) => res.render('widgets'))
 app.get('/data', (req, res) => res.render('data'))
 app.get('/data-routes', (req, res) => res.render('data-routes'))
 app.get('/index', (req, res) => res.render('index'))
 app.get('/', (req, res) => res.render('index'))
+
+app.get('/widgets/:widgetName', require('widgets/widgetHandler'))
 
 app.use((req, res) => {
   res.status(404)

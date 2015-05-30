@@ -10,5 +10,5 @@ log
 public/Leaderboard.html
 public/Leaderboard_files
 public/*.css
-public/*.min.js
+public/*.js
 

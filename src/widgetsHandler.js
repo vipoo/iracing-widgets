@@ -4,8 +4,8 @@ import fs from 'fs';
 import widgetNames from 'lib/widgetNames';
 import moment from 'moment';
 
-var normalizedPath = require('path').join(__dirname, 'components');
-fs.readdirSync(normalizedPath).forEach(f => require('components/' + f))
+var normalizedPath = require('path').join(__dirname, 'widgets/components');
+fs.readdirSync(normalizedPath).forEach(f => require('widgets/components/' + f))
 
 function addWidget(widgetName, res, widget, args) {
 
@@ -15,7 +15,7 @@ function addWidget(widgetName, res, widget, args) {
           .then(html => res.write(`iRacingWidgets.${widgetName} = '${html}';`))
 }
 
-const widgetBootstrap = fs.readFileSync('./src/assets/widgetInjector.js').toString();
+const widgetBootstrap = fs.readFileSync('./src/widgets/assets/widgetInjector.js').toString();
 
 function extractWidgetParams(instanceName, input) {
   //input = widgetType[arg1, arg2, ...]
@@ -48,7 +48,7 @@ export default function(req, res) {
             .map(k => extractWidgetParams(k, req.query[k]))
             .filter(k => !!k)
             .filter(k => widgetNames.has(k.name))
-            .map(k => addWidget(k.instanceName, res, require('components/' + k.name), k.args)))
+            .map(k => addWidget(k.instanceName, res, require('widgets/components/' + k.name), k.args)))
     .catch(err => {
       res.write('console.log("Error producing widget javascript!"); throw new Error("Error producing widget javascript!")')
       throw err

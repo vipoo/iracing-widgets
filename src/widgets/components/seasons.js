@@ -1,5 +1,5 @@
 import React from 'react';
-import Season from 'components/season';
+import Season from 'widgets/components/season';
 import iRacingService from 'lib/iRacingService';
 import WidgetNames from 'lib/widgetNames';
 

@@ -1,18 +1,18 @@
 module.exports = {
   widget: {
     options: {
-      paths: ["./src/styles"]
+      paths: ["./src/widgets/styles"]
     },
     files: {
-      "./public/main.css": "./src/styles/main.less"
+      "./public/main.css": "./src/widgets/styles/main.less"
     }
   },
   site: {
     options: {
-      paths: ["./src/styles"]
+      paths: ["./src/site/styles"]
     },
     files: {
-      "./public/styles.css": "./src/styles/styles.less"
+      "./public/styles.css": "./src/site/styles/styles.less"
     }
 
   }

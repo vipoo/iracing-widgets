@@ -13,7 +13,7 @@ const accessLogger = {
 const app = express()
 app.use(morgan(':date[iso] :remote-addr :remote-user :method :url :status - :req[content-length] - :res[content-length] - :response-time ms', {stream: accessLogger}))
 app.set('view engine', 'ejs');
-app.set('views', 'src/views');
+app.set('views', 'src/site/views');
 
 app.use(compression())
 var oneDay = 86400000;

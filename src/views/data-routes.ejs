@@ -51,11 +51,15 @@ specific resource have its path changed.</p>
 
   <tr><td>&nbsp;</td><td></td></tr>
   <tr><td>/leagues</td><td>Collection of all leagues</td></tr>
-  <tr><td>/leagues:league-id</td><td>Details for a specific league</td></tr>
-  <tr><td>/leagues:league-id/seasons</td><td>A collection of active and inactive seasons for the league</td></tr>
-  <tr><td>/leagues:league-id/seasons/:season-id:</td><td>Details of a specific league's season</td></tr>
-  <tr><td>/leagues:league-id/seasons/:season-id:/standings/drivers</td><td>A list of all current drivers standings for the league's season</td></tr>
-  <tr><td>/leagues:league-id/seasons/:season-id:/standings/drivers/:driver-id</td><td>Details for a specific driver's standing</td></tr>
+  <tr><td>/leagues/:league-id</td><td>Details for a specific league</td></tr>
+  <tr><td>/leagues/:league-id/seasons</td><td>A collection of active and inactive seasons for the league</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id:</td><td>Details of a specific league's season</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id:/standings/drivers</td><td>A list of all current drivers standings for the league's season</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id:/standings/drivers/:driver-id</td><td>Details for a specific driver's standing</td></tr>
+
+  <tr><td>/leagues/:league-id/seasons/:season-id/sessions</td><td>List of all sessions conducted within the league season</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id/sessions/:session-id</td><td>Details of the actual session conducted</td></tr>
+
   <tr><td>/leagues:league-id/drivers</td><td>List of all league members</td></tr>
   <tr><td>/leagues:league-id/drivers/:driver-id:</td><td>Details for a specific league member</td></tr>
 

@@ -53,10 +53,14 @@ setInterval(() => {
   try {
     for(let item of inMemoryCache) {
       let expireStamp = item[1].response.headers['expires']
-      let expiresAt = moment(expireStamp)
-      let age = moment.duration(moment().diff(expiresAt)).asSeconds()
-      if( expireStamp && age <= 0 )
+      if( !expireStamp )
         inMemoryCache.delete(item[0])
+      else {
+        let expiresAt = moment(new Date(expireStamp))
+        let age = moment.duration(expiresAt.diff(moment())).asSeconds()
+        if( age <= 0 )
+          inMemoryCache.delete(item[0])
+      }
     }
   } catch(err) {
     $logger.error(err.stack)

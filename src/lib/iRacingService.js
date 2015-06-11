@@ -90,7 +90,12 @@ setInterval(() => {
 
 function get(url) {
 
-  const path = url.match(/^http/) ? url : host + url
+  let path = url.match(/^http/) ? url : host + url
+
+  const DEBUG=false
+  if( DEBUG )
+    path = path.replace('.net.dev', '.net').replace('.net', '.net.dev')
+
   const cachedHit = inMemoryCache.get(path)
   if(cachedHit)
     return when(cachedHit.response)

@@ -26,7 +26,7 @@ export default function(req, res) {
   const widget = require('widgets/components/' + widgetName)
 
   widget
-    .inject(req.query.leagueId)
+    .inject(req.query)
     .then(component => React.renderToStaticMarkup(component))
     .then(html => res.send(`document.write('${html}');`))
     .done()

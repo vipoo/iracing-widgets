@@ -25,8 +25,8 @@ const LeagueDrivers = React.createClass({
 
 });
 
-LeagueDrivers.inject = function(leagueId) {
-  return iRacingService.get('/leagues/' + parseInt(leagueId))
+LeagueDrivers.inject = function(params) {
+  return iRacingService.get('/leagues/' + parseInt(params.leagueId))
     .then( res => iRacingService.get(res.body._links.drivers.href) )
     .then( res => when.map(res.body._embedded.drivers, d => iRacingService.get(d._links.driver.href).then(r => r.body)))
     .then( drivers => <LeagueDrivers drivers={drivers} /> )

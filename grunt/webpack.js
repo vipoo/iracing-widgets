@@ -34,7 +34,7 @@ module.exports = {
     },
     plugins: [
       definePlugin,
-      new webpack.optimize.UglifyJsPlugin({minimize: true})
+      //new webpack.optimize.UglifyJsPlugin({minimize: false})
     ]
   },
   dist: {}

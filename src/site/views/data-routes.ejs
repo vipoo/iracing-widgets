@@ -28,6 +28,13 @@ specific resource have its path changed.</p>
   <tr><td>/drivers/:driver-id:</td><td>Details for a specific driver</td></tr>
   <tr><td>/drivers/:driver-id:/details/:race-type:</td><td>Category (oval/road) specific driver details - including irating and license</td></tr>
   <tr><td>/drivers/:driver-id:/standings</td><td>A collection standings for each season the driver has achieved</td></tr>
+  <tr><td>/drivers/:driver-id:/stats</td>
+    <td>A list of upto 500, detailing session results for this driver.<br>
+        Optional filter params:<br>
+        <b>car_id:</b> The numerical id of a car resource - to list only sessions where the driver used this car<br>
+        <b>track_id:</b> The numerical id of a track resource - to list only sessions where this track was used<br>
+        <b>session_time:</b> The time (<a href='https://en.wikipedia.org/wiki/ISO_8601'>in ISO 8601</a>) to filter the list.  Only sessions with a time less than specified will be returned.  You can use the session_time field of the last returned resource to retrieve the next 500 session events.<br>
+  </td></tr>
 
   <tr><td>&nbsp;</td><td></td></tr>
   <tr><td>/locations</td><td>Collection of all locations</td></tr>
@@ -46,6 +53,10 @@ specific resource have its path changed.</p>
   <tr><td>/seasons/:race-type:/:season-id:/events/:race-week</td><td>Details of the specific season's event</td></tr>
   <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions</td><td>A list of sessions conducted or scheduled for the weekly event</td></tr>
   <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id</td><td>Details of a specific session</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id/sub-sessions</td><td>List of all the sub-sessions conducted within the specified session</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id/sub-sessions/:sub-session-id</td><td>The details of a specific sub-session within the specified session</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id/sub-sessions/:sub-session-id/drivers</td><td>List of all the drivers registered within the specified sub-session</td></tr>
+  <tr><td>/seasons/:race-type:/:season-id:/events/:race-week/sessions/:session-id/sub-sessions/:sub-session-id/drivers/:driver-id</td><td>The driver stats for the specific driver's sub-session results.</td></tr>
   <tr><td>/seasons/:race-type:/:season-id:/standings/drivers</td><td>List of of latest driver standings for this season</td></tr>
   <tr><td>/seasons/:race-type:/:season-id:/standings/drivers/:driver-id:</td><td>Specific driver's standing for this season</td></tr>
 
@@ -59,6 +70,8 @@ specific resource have its path changed.</p>
 
   <tr><td>/leagues/:league-id/seasons/:season-id/sessions</td><td>List of all sessions conducted within the league season</td></tr>
   <tr><td>/leagues/:league-id/seasons/:season-id/sessions/:session-id</td><td>Details of the actual session conducted</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id/sessions/:session-id/drivers</td><td>404: This resource is not mapped yet</td></tr>
+  <tr><td>/leagues/:league-id/seasons/:season-id/sessions/:session-id/drivers/:driver-id</td><td>The driver stats for the specific league session.</td></tr>
 
   <tr><td>/leagues:league-id/drivers</td><td>List of all league members</td></tr>
   <tr><td>/leagues:league-id/drivers/:driver-id:</td><td>Details for a specific league member</td></tr>

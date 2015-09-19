@@ -8,6 +8,7 @@ const DefaultWaitPeriod = 2000;
 
 class CloudWatchLogger extends winston.Transport {
   constructor(options) {
+    super()
     this.name = 'cloudWatchLogger';
     this.level = options.level || 'info';
     this.logStreamName = options.logStreamName

@@ -11,4 +11,5 @@ public/Leaderboard.html
 public/Leaderboard_files
 public/*.css
 public/*.js
+!/log/.keep
 

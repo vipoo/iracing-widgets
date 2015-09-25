@@ -26,12 +26,12 @@
     "webpack": "^1.9.10",
     "grunt-webpack": "^1.0.8",
     "when": "^3.7.2",
-    "winston": "^0.9.0",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "load-grunt-config": "^0.17.2"
+    "winston": "^0.9.0"
   },
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "load-grunt-config": "^0.17.2",
     "babel-core": "^5.4.7",
     "babel-eslint": "^2.0.2",
     "grunt-concurrent": "^1.0.0",
